@@ -14,3 +14,7 @@ string TomatoSauce::getName(){
 double TomatoSauce::getPrice(){
     return this->price;
 }
+
+PizzaComponent* TomatoSauce::clone() const{
+    return new TomatoSauce (*this);
+}

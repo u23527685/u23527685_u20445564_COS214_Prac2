@@ -14,3 +14,7 @@ string Mushrooms::getName(){
 double Mushrooms::getPrice(){
     return this->price;
 }
+
+PizzaComponent* Mushrooms::clone() const{
+    return new Mushrooms (*this);
+}

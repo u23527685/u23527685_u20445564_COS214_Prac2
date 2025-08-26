@@ -1,0 +1,47 @@
+#include "PizzaComponent.h"
+#include "BeefSausage.h"
+#include "Cheese.h"
+#include "Dough.h"
+#include "Feta.h"
+#include "GreenPeppers.h"
+#include "Mushrooms.h"
+#include "Olives.h"
+#include "Onions.h"
+#include "Pepperoni.h"
+#include "Salami.h"
+#include "TomatoSauce.h"
+#include "ToppingGroup.h"
+#include<iostream>
+
+using namespace std;
+
+int main(){
+    ToppingGroup vegan("vegeterian");
+    ToppingGroup meat("meat lovers");
+    //vegan pizza
+    vegan.add(new Onions());
+    vegan.add(new GreenPeppers());
+    vegan.add(new Mushrooms());
+    vegan.add(new Feta());
+
+    //meat pizza
+    meat.add(new Salami());
+    meat.add(new BeefSausage());
+    meat.add(new Cheese());
+
+    cout<<vegan.getName()<<endl;
+    cout<<vegan.getPrice()<<endl;
+
+    cout<<meat.getName()<<endl;
+    cout<<meat.getPrice()<<endl;
+
+    ToppingGroup meatdel("meat lovers deluxe");
+    meatdel.add(meat.clone());
+    meatdel.add(new Pepperoni());
+
+    cout<<meatdel.getName()<<endl;
+    cout<<meatdel.getPrice()<<endl;
+
+
+    return 0;
+}

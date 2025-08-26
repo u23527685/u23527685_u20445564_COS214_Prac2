@@ -8,5 +8,6 @@ class Dough: public PizzaComponent{
         ~Dough();
         string getName();
         double getPrice();
+        PizzaComponent* clone() const override;
 };
 #endif

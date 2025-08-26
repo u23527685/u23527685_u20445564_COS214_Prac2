@@ -1,11 +1,11 @@
-#ifndef GREENPEPPERS_H
-#define GREENPEPPERS_H
+#ifndef BEEFSAUSAGE_H
+#define BEEFSAUSAGE_H
 #include "PizzaComponent.h"
 using namespace std;
-class GreenPeppers: public PizzaComponent{
+class BeefSausage: public PizzaComponent{
     public:
-        GreenPeppers();
-        ~GreenPeppers();
+        BeefSausage();
+        ~BeefSausage();
         string getName();
         double getPrice();
         PizzaComponent* clone() const override;

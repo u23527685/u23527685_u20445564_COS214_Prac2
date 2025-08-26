@@ -14,3 +14,7 @@ string Cheese::getName(){
 double Cheese::getPrice(){
     return this->price;
 }
+
+PizzaComponent* Cheese::clone() const{
+    return new Cheese (*this);
+} 

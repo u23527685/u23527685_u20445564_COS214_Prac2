@@ -14,3 +14,7 @@ string Pepperoni::getName(){
 double Pepperoni::getPrice(){
     return this->price;
 }
+
+PizzaComponent* Pepperoni::clone() const{
+    return new Pepperoni (*this);
+}

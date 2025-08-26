@@ -14,3 +14,7 @@ string GreenPeppers::getName(){
 double GreenPeppers::getPrice(){
     return this->price;
 }
+
+PizzaComponent* GreenPeppers::clone() const{
+    return new GreenPeppers (*this);
+}

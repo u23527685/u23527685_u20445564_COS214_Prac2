@@ -7,12 +7,12 @@ class PizzaComponent{
     protected:
         string name;
         double price;
-        bool topping;
     public:
+        bool topping;
         virtual string getName()=0;
         virtual double getPrice()=0;
-        virtual ~PizzaComponent();
+        virtual ~PizzaComponent()=default;
+        virtual PizzaComponent* clone() const=0;
         PizzaComponent(string name, double price,bool top);
-
 };
 #endif

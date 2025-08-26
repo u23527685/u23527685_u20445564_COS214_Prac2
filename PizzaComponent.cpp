@@ -6,4 +6,3 @@ PizzaComponent::PizzaComponent(string name, double price, bool top){
     this->price=price;
     this->topping=top;
 }
-PizzaComponent::~PizzaComponent(){}
