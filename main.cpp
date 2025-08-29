@@ -11,6 +11,11 @@
 #include "Salami.h"
 #include "TomatoSauce.h"
 #include "ToppingGroup.h"
+#include "Pizza.h"
+#include "BasePizza.h"
+#include "PizzaDecorator.h"
+#include "ExtraCheese.h"
+#include "StuffedCrust.h"
 #include<iostream>
 
 using namespace std;
@@ -42,6 +47,10 @@ int main(){
     cout<<meatdel.getName()<<endl;
     cout<<meatdel.getPrice()<<endl;
 
+    StuffedCrust sc(new BasePizza(&meat));
+    ExtraCheese ec(new BasePizza(&meatdel));
 
+    sc.printPizza();
+    ec.printPizza();
     return 0;
 }

@@ -19,7 +19,47 @@ SOURCES = main.cpp \
           Pepperoni.cpp \
           Salami.cpp \
           TomatoSauce.cpp \
-          ToppingGroup.cpp
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          ToppingGroup.cpp \
+          Pizza.cpp \
+          BasePizza.cpp \
+          PizzaDecorator.cpp \
+          StuffedCrust.cpp \
+          ExtraCheese.cpp 
 
 # Object files (automatically generated from source files)
 OBJECTS = $(SOURCES:.cpp=.o)
@@ -37,7 +77,12 @@ HEADERS = PizzaComponent.h \
           Pepperoni.h \
           Salami.h \
           TomatoSauce.h \
-          ToppingGroup.h
+          ToppingGroup.h \
+          Pizza.h \
+          BasePizza.h \
+          PizzaDecorator.h \
+          StuffedCrust.h \
+          ExtraCheese.h
 
 # Default target
 all: $(TARGET)

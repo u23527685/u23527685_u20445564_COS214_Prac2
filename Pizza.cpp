@@ -8,5 +8,5 @@ Pizza::Pizza(){
 }
 
 void Pizza::printPizza(){
-    cout<<getName()<<" : R"<<getPrice();
+    cout<<getName()<<" : R"<<getPrice()<<endl;
 }
