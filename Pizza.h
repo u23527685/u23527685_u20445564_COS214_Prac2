@@ -13,5 +13,4 @@ class Pizza{
         virtual string getName()=0;
         void printPizza();
 };
-
 #endif
