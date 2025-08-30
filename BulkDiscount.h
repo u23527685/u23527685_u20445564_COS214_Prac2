@@ -4,7 +4,8 @@
 
 class BulkDiscount : public DiscountStrategy{
     public:
-        virtual int applyDiscount(double totalPrice, int pizzaCount);
+        BulkDiscount(Order* order);
+        virtual int applyDiscount(double totalPrice);
         virtual string getDiscountName();
 };
 #endif

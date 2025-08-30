@@ -1,11 +1,14 @@
 #ifndef FAMILYDISCOUNT_H
 #define FAMILYDISCOUNT_H
 #include "DiscountStrategy.h"
-using namespace std;
+#include "Order.h"
 
+using namespace std;
+class Order;
 class FamilyDiscount : public DiscountStrategy{
     public:
-        virtual int applyDiscount(double totalPrice, int pizzaCount);
+        FamilyDiscount(Order* order);
+        virtual int applyDiscount(double totalPrice);
         virtual string getDiscountName();
 };
 #endif
