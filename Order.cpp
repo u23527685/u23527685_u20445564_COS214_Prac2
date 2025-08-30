@@ -1,0 +1,52 @@
+#include"Order.h"
+#include "Pizza.h"
+#include "OrderState.h"
+#include "Orderring.h"
+#include <vector>
+using namespace std;
+
+Order::Order(){
+    state=new Orderring();
+}
+
+Order::Order(bool fam){
+    family=fam;
+    state=new Orderring();
+}
+
+void Order::addPizza(Pizza* p){
+    if(p!=nullptr)
+        pizzas.push_back(p);
+}
+
+void Order::print(){
+    for(size_t i=0; i<pizzas.size();i++)
+        pizzas[i]->printPizza();
+}
+
+double Order::getTotal(){
+    double out=0;
+     for(size_t i=0; i<pizzas.size();i++)
+        out+=pizzas[i]->getPrice();
+    return out;
+}
+
+void Order::checkOut(){
+    OrderState* newState=state->checkout();
+    delete state; 
+    state=newState;
+}
+
+void Order::pay(){
+    OrderState* newState=state->pay();
+    delete state; 
+    state=newState;
+}
+
+Order::~Order(){
+    delete state;
+}
+
+ void Order::printOrder(){
+    state->print(this);
+ }
