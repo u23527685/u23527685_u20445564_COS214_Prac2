@@ -47,10 +47,15 @@ int main(){
     cout<<meatdel.getName()<<endl;
     cout<<meatdel.getPrice()<<endl;
 
-    StuffedCrust sc(new BasePizza(&meat));
-    ExtraCheese ec(new BasePizza(&meatdel));
+    BasePizza b1(&meat);
+    BasePizza b2(&meatdel);
+
+    StuffedCrust sc(&b1);
+    ExtraCheese ec(&b2);
+    StuffedCrust dd(&ec);
 
     sc.printPizza();
     ec.printPizza();
+    dd.printPizza();
     return 0;
 }

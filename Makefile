@@ -19,41 +19,6 @@ SOURCES = main.cpp \
           Pepperoni.cpp \
           Salami.cpp \
           TomatoSauce.cpp \
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
           ToppingGroup.cpp \
           Pizza.cpp \
           BasePizza.cpp \
