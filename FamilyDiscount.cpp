@@ -1,12 +1,11 @@
-#include "FAMILYDISCOUNT.h"
+#include "FamilyDiscount.h"
 #include <iostream>
-#include "DiscountStrategy.h"
 
-FamilyDiscount::FamilyDiscount(Order* order) : DiscountStrategy(order) {}
-int FamilyDiscount::applyDiscount(double totalPrice)
+FamilyDiscount::FamilyDiscount() : DiscountStrategy() {}
+double FamilyDiscount::applyDiscount(double totalPrice)
 {
     //15% discount
-    return static_cast<int>(totalPrice * 0.85);
+    return (totalPrice * 0.85);
     
 }
 

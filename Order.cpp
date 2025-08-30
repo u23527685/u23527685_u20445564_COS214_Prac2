@@ -3,6 +3,7 @@
 #include "OrderState.h"
 #include "Orderring.h"
 #include <vector>
+#include <iostream>
 using namespace std;
 //discount variable
 Order::Order(){
@@ -35,7 +36,7 @@ double Order::getTotal(){
     double out=0;
      for(size_t i=0; i<pizzas.size();i++)
         out+=pizzas[i]->getPrice();
-    return out;
+    return (out);
 }
 
 void Order::checkOut(){
@@ -52,8 +53,16 @@ void Order::pay(){
 
 Order::~Order(){
     delete state;
+    delete discount;
 }
 
  void Order::printOrder(){
     state->print(this);
+ }
+
+ void Order::printDiscount(){
+    DiscountStrategy* newdiscount=discount->getDiscount(this);
+    delete discount;
+    discount=newdiscount;
+    cout<<discount->getDiscountName();
  }

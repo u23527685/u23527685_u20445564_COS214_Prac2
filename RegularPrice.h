@@ -4,8 +4,8 @@
 using namespace std;
 class RegularPrice : public DiscountStrategy{
     public:
-        RegularPrice(Order* order);
-        virtual int applyDiscount(double totalPrice);
-        virtual string getDiscountName();
+        RegularPrice();
+        virtual double applyDiscount(double totalPrice);
+        string getDiscountName();
 };
 #endif

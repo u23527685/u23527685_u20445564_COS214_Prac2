@@ -14,6 +14,7 @@ class OrderState{
         OrderState* checkout();
         OrderState* pay();
         double tip=0;
+        double getdicountPrice(Order* o);
 };
 
 #endif

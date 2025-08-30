@@ -71,22 +71,16 @@ int main(){
     order.addPizza(&b1);
     order.addPizza(&b2);
     //discount
-    double total = order.getTotal();
-
-    DiscountStrategy* discount1 = DiscountStrategy::getDiscount(&order);
 
     cout<<"Orderring print"<<endl;
     order.printOrder();
     order.checkOut();
 
     cout<<"Checkout print"<<endl;
-    cout<<"Before Discount: R"<<total<<endl;
     order.printOrder();
     order.pay();
 
     cout<<"Paid print"<<endl;
     order.printOrder();
-
-    delete discount1;
     return 0;
 }

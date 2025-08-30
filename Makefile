@@ -34,7 +34,11 @@ SOURCES = main.cpp \
           PizzaMenu.cpp \
           SpecialsMenu.cpp \
           Customer.cpp \
-          Website.cpp 
+          Website.cpp \
+          DiscountStrategy.cpp \
+          RegularPrice.cpp \
+          BulkDiscount.cpp \
+          FamilyDiscount.cpp
 
 # Object files (automatically generated from source files)
 OBJECTS = $(SOURCES:.cpp=.o)
@@ -68,7 +72,11 @@ HEADERS = PizzaComponent.h \
           PizzaMenu.h \
           SpecialsMenu.h \
           Customer.h \
-          Website.h
+          Website.h \
+          DiscountStrategy.h \
+          RegularPrice.h \
+          BulkDiscount.h \
+          FamilyDiscount.h
 
 # Default target
 all: $(TARGET)

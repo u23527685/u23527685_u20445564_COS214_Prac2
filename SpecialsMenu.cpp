@@ -1,4 +1,5 @@
 #include "SpecialsMenu.h"
+#include "Observer.h"
 #include <iostream>
 
 SpecialsMenu::SpecialsMenu() {

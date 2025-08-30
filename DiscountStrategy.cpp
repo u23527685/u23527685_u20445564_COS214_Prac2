@@ -7,26 +7,20 @@
 using namespace std;
 
 
-DiscountStrategy::DiscountStrategy(Order *order)
+DiscountStrategy::DiscountStrategy()
 {
-    this->order = order;
 }
 
-DiscountStrategy::~DiscountStrategy()
-{
-    cout<<"Deleting order discount"<<endl;
-    delete order;
-}
 
 DiscountStrategy* DiscountStrategy::getDiscount(Order *order)
 {
     if (order->getFamilyValidation()){
-        return new FamilyDiscount(order);
+        return new FamilyDiscount();
     }
     if (order->getSize() >= 5){
-        return new BulkDiscount(order);
+        return new BulkDiscount();
     }
     else {
-        return new RegularPrice(order);
+        return new RegularPrice();
     }
 }

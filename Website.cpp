@@ -1,4 +1,5 @@
 #include "Website.h"
+#include "Observer.h"
 #include <iostream>
 
 Website::Website() : websiteName("Romeo's Pizza Website") {

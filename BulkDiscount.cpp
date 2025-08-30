@@ -1,12 +1,11 @@
 #include "BulkDiscount.h"
 #include <iostream>
-#include "DiscountStrategy.h"
 
-BulkDiscount::BulkDiscount(Order* order) : DiscountStrategy(order) {}
+BulkDiscount::BulkDiscount() : DiscountStrategy() {}
 
-int BulkDiscount::applyDiscount(double totalPrice)
+double BulkDiscount::applyDiscount(double totalPrice)
 {   //10% discount on 5+ pizzas
-    return static_cast<int>(totalPrice * 0.9);
+    return (totalPrice * 0.9);
 }
 
 string BulkDiscount::getDiscountName(){ 

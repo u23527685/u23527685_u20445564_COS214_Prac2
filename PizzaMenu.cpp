@@ -1,5 +1,6 @@
 #include "PizzaMenu.h"
 #include <iostream>
+#include "Observer.h"
 
 PizzaMenu::PizzaMenu() {
     cout << "Pizza Menu created." << endl;

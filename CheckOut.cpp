@@ -12,8 +12,10 @@ void CheckOut::print(Order* o){
     cout<<"Order"<<endl;
     o->print();
     cout<<"Pizza Total R"<<o->getTotal()<<endl;
+    o->printDiscount();
+    cout<<" :R"<<getdicountPrice(o)<<endl;
     cout<<"Enter Tip amount:R";
     cin>>tip;
-    cout<<"Total R"<<o->getTotal()+tip<<endl;
+    cout<<"Total R"<<getdicountPrice(o)+tip<<endl;
 }
 
