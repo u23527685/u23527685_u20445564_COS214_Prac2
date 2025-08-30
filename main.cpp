@@ -16,6 +16,7 @@
 #include "PizzaDecorator.h"
 #include "ExtraCheese.h"
 #include "StuffedCrust.h"
+#include "Order.h"
 #include<iostream>
 
 using namespace std;
@@ -40,6 +41,7 @@ int main(){
     cout<<meat.getName()<<endl;
     cout<<meat.getPrice()<<endl;
 
+    //Meat Deluxe
     ToppingGroup meatdel("meat lovers deluxe");
     meatdel.add(meat.clone());
     meatdel.add(new Pepperoni());
@@ -47,9 +49,11 @@ int main(){
     cout<<meatdel.getName()<<endl;
     cout<<meatdel.getPrice()<<endl;
 
+    //Base Pizza
     BasePizza b1(&meat);
     BasePizza b2(&meatdel);
 
+    //Decorators
     StuffedCrust sc(&b1);
     ExtraCheese ec(&b2);
     StuffedCrust dd(&ec);
@@ -57,5 +61,25 @@ int main(){
     sc.printPizza();
     ec.printPizza();
     dd.printPizza();
+
+    //order
+    Order order;
+    order.addPizza(&sc);
+    order.addPizza(&ec);
+    order.addPizza(&dd);
+    order.addPizza(&b1);
+    order.addPizza(&b2);
+
+    cout<<"Orderring print"<<endl;
+    order.printOrder();
+    order.checkOut();
+
+    cout<<"Checkout print"<<endl;
+    order.printOrder();
+    order.pay();
+
+    cout<<"Paid print"<<endl;
+    order.printOrder();
+
     return 0;
 }
