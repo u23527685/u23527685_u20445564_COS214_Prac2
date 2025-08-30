@@ -4,7 +4,7 @@
 #include "Orderring.h"
 #include <vector>
 using namespace std;
-
+//discount variable
 Order::Order(){
     state=new Orderring();
 }
@@ -13,10 +13,17 @@ Order::Order(bool fam){
     family=fam;
     state=new Orderring();
 }
-
+int Order::getSize(){
+    return this->pizzas.size();
+}
 void Order::addPizza(Pizza* p){
     if(p!=nullptr)
         pizzas.push_back(p);
+}
+
+bool Order::getFamilyValidation()
+{
+    return family;
 }
 
 void Order::print(){

@@ -13,11 +13,14 @@ class Order{
         vector<Pizza*> pizzas;
         bool family=false;
         OrderState* state;
-
+    
     public:
+
         void print();
+        int getSize();
         double getTotal();
         void addPizza(Pizza* p);
+        bool getFamilyValidation();
         Order();
         Order(bool fam);
         ~Order();
