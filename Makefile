@@ -6,7 +6,7 @@ CXXFLAGS = -std=c++11 -g -Wall -Wextra
 TARGET = pizza
 
 # Source files
-SOURCES = main.cpp \
+SOURCES = TestingMain.cpp \
           PizzaComponent.cpp \
           BeefSausage.cpp \
           Cheese.cpp \
