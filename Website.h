@@ -10,11 +10,14 @@ private:
     string websiteName;
     
 public:
-    Website();
+    Website(string websiteName);
     ~Website();
     
     void update(string message) override;
-    string getName() override;
+    string getName() const override;
+    virtual bool operator==(const Observer& other)const override;
+    
+
 };
 
 #endif

@@ -15,7 +15,10 @@ public:
     virtual ~Customer();
     
     virtual void update(string message);
-    string getName();
+    string getName() const;
+    virtual bool operator==(const Observer& other)const override;
+
+    
 };
 
 #endif 

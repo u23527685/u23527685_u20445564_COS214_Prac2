@@ -40,15 +40,14 @@ using namespace std;
 #define WHITE       "\033[37m"
 
 int main() {
-//    
-    Website site;
-    cout<<"\nWebsite Name: "<< site.getName()<<endl;
-    cout << BOLD << BLUE << "================= 🍕"<< site.getName()<<"🍕 =================" << RESET << endl << endl;
+
+    //Testing website
+    Website* myWeb = new Website("Kai's Pizza Paradise");
     cout<<"\nSimulating updates...\n"<<endl;
-    site.update("New upcoming pizza added to the menu: BBQ Chicken!");
-    site.update("Website maintenance scheduled for tonight!");
-
-
+    myWeb->update("New upcoming pizza added to the menu: BBQ Chicken!");
+    myWeb->update("Website maintenance scheduled for tonight!");
+    myWeb->getName();
+    
     ToppingGroup vegan("Vegeterian");
     ToppingGroup meat("Meat Lovers");
 
@@ -85,14 +84,25 @@ int main() {
     cout << MAGENTA << BOLD << "\n🔔 Testing Observer Notifications..." << RESET << endl;
     pizzaMenu.addObserver(jessica);
     pizzaMenu.addObserver(alex);
+    
+
     specialsMenu.addObserver(jessica);
     specialsMenu.notifyObservers("Weekend Special: Buy 1 Get 1 Free!");
     //remove observer
-    // specialsMenu.removePizza(which pizza);
+    cout<<"Removing customer"<<endl;
+    pizzaMenu.removeObserver(jessica);
+    
     // Base pizzas
     BasePizza b1(&meat);
     BasePizza b2(&meatdel);
+    BasePizza b3(&meat);
+    pizzaMenu.addPizza(&b1);
+    pizzaMenu.addPizza(&b2);
+    cout<<"Removing Pizzas:"<<endl;
+    pizzaMenu.removePizza(&b3);
+   
 
+    
     // Decorators
     StuffedCrust sc(&b1);
     ExtraCheese ec(&b2);
@@ -127,6 +137,7 @@ int main() {
 
     delete jessica;
     delete alex;
-
+    //for website
+    delete myWeb;
     return 0;
 }

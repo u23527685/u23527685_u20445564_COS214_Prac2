@@ -2,11 +2,14 @@
 #include "Observer.h"
 #include <iostream>
 
-Website::Website() : websiteName("Romeo's Pizza Website") {
-    cout << "Website system initialized." << endl;
+
+Website::Website(string websiteName)
+{
+    this->websiteName = websiteName;
 }
 
-Website::~Website() {
+Website::~Website()
+{
     cout << "Website system shutdown." << endl;
 }
 
@@ -15,7 +18,12 @@ void Website::update(string message) {
     cout << "Website menu has been automatically updated!" << endl;
 }
 
-string Website::getName()
+string Website::getName() const
 {
     return websiteName;
+}
+
+bool Website::operator==(const Observer &other) const
+{
+    return (this->getName() == other.getName());
 }

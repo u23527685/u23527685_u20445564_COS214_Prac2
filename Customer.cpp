@@ -14,6 +14,12 @@ void Customer::update(string message) {
          << message << endl;
 }
 
-string Customer::getName() {
+string Customer::getName()const {
     return customerName;
+}
+
+bool Customer::operator==(const Observer &other) const
+{
+    return (this->getName() == other.getName());
+
 }

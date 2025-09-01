@@ -23,6 +23,7 @@ void Menus::removeObserver(Observer* observer) {
     for (size_t i = 0; i < observers.size(); ++i) {
         if (observers[i] == observer) {
             observers.erase(observers.begin() + i);
+            cout<<"Removed "<<observer->getName()<< " as Observer"<<endl;
             break;
         }
     }
@@ -42,7 +43,10 @@ void Menus::removePizza(Pizza* pizza) {
             delete pizzas[i];
             pizzas.erase(pizzas.begin() + i);
             notifyObservers("Pizza removed from menu: " + pizzaName);
+            cout<<"Removed "<< pizza->getName()<< "as Pizza"<<endl;
             break;
+
         }
     }
+
 }
