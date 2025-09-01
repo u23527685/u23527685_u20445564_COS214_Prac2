@@ -1,6 +1,7 @@
 # Compiler and flags
 CXX = g++
 CXXFLAGS = -std=c++11 -g -Wall -Wextra
+COVERAGE_FLAGS = -fprofile-arcs -ftest-coverage --coverage
 
 # Target executable
 TARGET = pizza
@@ -89,9 +90,46 @@ $(TARGET): $(OBJECTS)
 %.o: %.cpp $(HEADERS)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
+# Coverage-enabled build (reuses main object files with coverage flags)
+coverage: clean-coverage $(TARGET)_coverage
+
+$(TARGET)_coverage: CXXFLAGS += $(COVERAGE_FLAGS)
+$(TARGET)_coverage: $(OBJECTS)
+	$(CXX) $(CXXFLAGS) -o $(TARGET)_coverage $(OBJECTS) -lgcov
+
+# Run coverage analysis
+test-coverage: coverage
+	@echo "Running program with coverage analysis..."
+	./$(TARGET)_coverage
+	@echo "Generating coverage report..."
+	@if ls *.gcno 1> /dev/null 2>&1; then \
+		gcov -b -c *.gcno; \
+	else \
+		echo "No .gcno files found. Make sure the program was built with coverage flags."; \
+	fi
+	@echo "Coverage files (.gcov) generated!"
+	@echo "To view coverage summary, check the .gcov files or use:"
+	@echo "  make coverage-html"
+
+# Generate HTML coverage report (requires lcov)
+coverage-html: test-coverage
+	@echo "Generating HTML coverage report..."
+	lcov --capture --directory . --output-file coverage.info
+	genhtml coverage.info --output-directory coverage_html
+	@echo "HTML coverage report generated in coverage_html/ directory"
+	@echo "Open coverage_html/index.html in your browser to view the report"
+
 # Clean up generated files
 clean:
-	rm -f $(OBJECTS) $(TARGET)
+	rm -f $(OBJECTS) $(TARGET) $(TARGET)_coverage
+	rm -f *.gcov *.gcda *.cov.o *.gcno coverage.info
+	rm -rf coverage_html/
+
+# Clean coverage files only
+clean-coverage:
+	rm -f $(TARGET)_coverage
+	rm -f *.gcov *.gcda *.cov.o *.gcno coverage.info
+	rm -rf coverage_html/
 
 # Rebuild everything from scratch
 rebuild: clean all
