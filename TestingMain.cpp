@@ -38,7 +38,7 @@ using namespace std;
 #define WHITE       "\033[37m"
 
 int main() {
-    cout << BOLD << BLUE << "================= 🍕 WELCOME TO PIZZA PARADISE 🍕 =================" << RESET << endl << endl;
+    cout << BOLD << BLUE << "-----------------  WELCOME TO PIZZA PARADISE  -----------------" << RESET << endl << endl;
 
     ToppingGroup vegan("Vegeterian");
     ToppingGroup meat("Meat Lovers");
@@ -73,7 +73,7 @@ int main() {
     Customer *alex = new Customer("Alex");
 
     // Add observers to menus
-    cout << MAGENTA << BOLD << "\n🔔 Testing Observer Notifications..." << RESET << endl;
+    cout << MAGENTA << BOLD << "\n Testing Observer Notifications..." << RESET << endl;
     pizzaMenu.addObserver(jessica);
     pizzaMenu.addObserver(alex);
     specialsMenu.addObserver(jessica);
@@ -88,7 +88,7 @@ int main() {
     ExtraCheese ec(&b2);
     StuffedCrust dd(&ec);
 
-    cout << YELLOW << "\n📌 Pizzas with Decorators:" << RESET << endl;
+    cout << YELLOW << "\n Pizzas with Decorators:" << RESET << endl;
     sc.printPizza();
     ec.printPizza();
     dd.printPizza();
@@ -101,18 +101,18 @@ int main() {
     order.addPizza(&b1);
     order.addPizza(&b2);
 
-    cout << BOLD << BLUE << "\n================ 🧾 ORDER SUMMARY ================" << RESET << endl;
+    cout << BOLD << BLUE << "\n----------------  ORDER SUMMARY ----------------" << RESET << endl;
     order.printOrder();
     order.checkOut();
 
-    cout << BOLD << GREEN << "\n================ CHECKOUT =================" << RESET << endl;
+    cout << BOLD << GREEN << "\n---------------- CHECKOUT -----------------" << RESET << endl;
     order.printOrder();
     order.pay();
 
-    cout << BOLD << YELLOW << "\n================ PAYMENT COMPLETE ✅ ================" << RESET << endl;
+    cout << BOLD << YELLOW << "\n---------------- PAYMENT COMPLETE  ----------------" << RESET << endl;
     order.printOrder();
 
-    cout << BOLD << BLUE << "\n================= THANK YOU! 🍕 =================" << RESET << endl;
+    cout << BOLD << BLUE << "\n----------------- THANK YOU!  -----------------" << RESET << endl;
 
     delete jessica;
     delete alex;
