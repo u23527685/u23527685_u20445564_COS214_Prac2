@@ -10,8 +10,7 @@ Customer::~Customer() {
 }
 
 void Customer::update(string message) {
-    cout << "[CUSTOMER NOTIFICATION - " << customerName << "] " 
-         << message << endl;
+    cout << "[CUSTOMER NOTIFICATION - " << customerName << "] "<< message << endl;
 }
 
 string Customer::getName()const {
