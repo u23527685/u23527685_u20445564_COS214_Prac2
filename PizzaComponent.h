@@ -14,5 +14,6 @@ class PizzaComponent{
         virtual ~PizzaComponent()=default;
         virtual PizzaComponent* clone() const=0;
         PizzaComponent(string name, double price,bool top);
+        bool operator==(const PizzaComponent& other)const;
 };
 #endif

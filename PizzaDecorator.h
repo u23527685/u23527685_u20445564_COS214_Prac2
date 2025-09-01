@@ -14,8 +14,7 @@ class PizzaDecorator:public Pizza{
         virtual ~PizzaDecorator()=default;
         virtual double getPrice() override;
         virtual string getName() override;
-    private:
-        Pizza* pizza;
+        virtual bool operator==(const Pizza& other)const;
 
 };
 
