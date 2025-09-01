@@ -21,6 +21,8 @@
 #include "Customer.h"
 #include "PizzaMenu.h"
 #include "SpecialsMenu.h"
+#include "Website.h"
+#include "Observer.h"
 #include <iostream>
 
 using namespace std;
@@ -38,7 +40,13 @@ using namespace std;
 #define WHITE       "\033[37m"
 
 int main() {
-    cout << BOLD << BLUE << "-----------------  WELCOME TO PIZZA PARADISE  -----------------" << RESET << endl << endl;
+//    cout << BOLD << BLUE << "================= 🍕 WELCOME TO PIZZA PARADISE 🍕 =================" << RESET << endl << endl;
+    Website site;
+    cout<<"\nWebsite Name: "<< site.getName()<<endl;
+    cout<<"\nSimulating updates...\n"<<endl;
+    site.update("New upcoming pizza added to the menu: BBQ Chicken!");
+    site.update("Website maintenance scheduled for tonight!");
+
 
     ToppingGroup vegan("Vegeterian");
     ToppingGroup meat("Meat Lovers");
@@ -73,12 +81,18 @@ int main() {
     Customer *alex = new Customer("Alex");
 
     // Add observers to menus
-    cout << MAGENTA << BOLD << "\n Testing Observer Notifications..." << RESET << endl;
+    cout << MAGENTA << BOLD << "\n🔔 Testing Observer Notifications..." << RESET << endl;
     pizzaMenu.addObserver(jessica);
     pizzaMenu.addObserver(alex);
     specialsMenu.addObserver(jessica);
     specialsMenu.notifyObservers("Weekend Special: Buy 1 Get 1 Free!");
-
+    //remove observer
+    
+    //Website website2;
+    pizzaMenu -= alex;
+    // pizzaMenu.removeObserver(alex);
+    specialsMenu -= jessica;
+    // specialsMenu.removePizza();
     // Base pizzas
     BasePizza b1(&meat);
     BasePizza b2(&meatdel);
@@ -88,7 +102,7 @@ int main() {
     ExtraCheese ec(&b2);
     StuffedCrust dd(&ec);
 
-    cout << YELLOW << "\n Pizzas with Decorators:" << RESET << endl;
+    cout << YELLOW << "\n📌 Pizzas with Decorators:" << RESET << endl;
     sc.printPizza();
     ec.printPizza();
     dd.printPizza();
@@ -100,59 +114,19 @@ int main() {
     order.addPizza(&dd);
     order.addPizza(&b1);
     order.addPizza(&b2);
-    
-    Order famorder(true);
-    famorder.addPizza(&sc);
-    famorder.addPizza(&ec);
-    famorder.addPizza(&dd);
 
-    Order regorder;
-    regorder.addPizza(&sc);
-    regorder.addPizza(&ec);
-    regorder.addPizza(&dd);
-    regorder.addPizza(&b1);
-
-    //Bulk
-    cout << BOLD << BLUE << "\n----------------  ORDER SUMMARY : BULK ----------------" << RESET << endl;
+    cout << BOLD << BLUE << "\n================ 🧾 ORDER SUMMARY ================" << RESET << endl;
     order.printOrder();
     order.checkOut();
 
-    cout << BOLD << GREEN << "\n---------------- CHECKOUT -----------------" << RESET << endl;
+    cout << BOLD << GREEN << "\n================ CHECKOUT =================" << RESET << endl;
     order.printOrder();
     order.pay();
 
-    cout << BOLD << YELLOW << "\n---------------- PAYMENT COMPLETE  ----------------" << RESET << endl;
+    cout << BOLD << YELLOW << "\n================ PAYMENT COMPLETE ✅ ================" << RESET << endl;
     order.printOrder();
 
-    cout << BOLD << BLUE << "\n----------------- THANK YOU!  -----------------" << RESET << endl;
-
-    //family
-    cout << BOLD << BLUE << "\n----------------  ORDER SUMMARY : FAMILY ----------------" << RESET << endl;
-    famorder.printOrder();
-    famorder.checkOut();
-
-    cout << BOLD << GREEN << "\n---------------- CHECKOUT -----------------" << RESET << endl;
-    famorder.printOrder();
-    famorder.pay();
-
-    cout << BOLD << YELLOW << "\n---------------- PAYMENT COMPLETE  ----------------" << RESET << endl;
-    famorder.printOrder();
-
-    cout << BOLD << BLUE << "\n----------------- THANK YOU!  -----------------" << RESET << endl;
-
-    //regular
-    cout << BOLD << BLUE << "\n----------------  ORDER SUMMARY : REGULAR ----------------" << RESET << endl;
-    regorder.printOrder();
-    regorder.checkOut();
-
-    cout << BOLD << GREEN << "\n---------------- CHECKOUT -----------------" << RESET << endl;
-    regorder.printOrder();
-    regorder.pay();
-
-    cout << BOLD << YELLOW << "\n---------------- PAYMENT COMPLETE  ----------------" << RESET << endl;
-    regorder.printOrder();
-
-    cout << BOLD << BLUE << "\n----------------- THANK YOU!  -----------------" << RESET << endl;
+    cout << BOLD << BLUE << "\n================= THANK YOU! 🍕 =================" << RESET << endl;
 
     delete jessica;
     delete alex;
