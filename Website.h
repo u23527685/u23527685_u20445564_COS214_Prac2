@@ -14,7 +14,7 @@ public:
     ~Website();
     
     void update(string message) override;
-    string getWebsiteName();
+    string getName() override;
 };
 
 #endif

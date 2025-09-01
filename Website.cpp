@@ -15,6 +15,7 @@ void Website::update(string message) {
     cout << "Website menu has been automatically updated!" << endl;
 }
 
-string Website::getWebsiteName() {
+string Website::getName()
+{
     return websiteName;
 }

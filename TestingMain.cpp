@@ -40,9 +40,10 @@ using namespace std;
 #define WHITE       "\033[37m"
 
 int main() {
-//    cout << BOLD << BLUE << "================= 🍕 WELCOME TO PIZZA PARADISE 🍕 =================" << RESET << endl << endl;
+//    
     Website site;
     cout<<"\nWebsite Name: "<< site.getName()<<endl;
+    cout << BOLD << BLUE << "================= 🍕"<< site.getName()<<"🍕 =================" << RESET << endl << endl;
     cout<<"\nSimulating updates...\n"<<endl;
     site.update("New upcoming pizza added to the menu: BBQ Chicken!");
     site.update("Website maintenance scheduled for tonight!");
@@ -87,12 +88,7 @@ int main() {
     specialsMenu.addObserver(jessica);
     specialsMenu.notifyObservers("Weekend Special: Buy 1 Get 1 Free!");
     //remove observer
-    
-    //Website website2;
-    pizzaMenu -= alex;
-    // pizzaMenu.removeObserver(alex);
-    specialsMenu -= jessica;
-    // specialsMenu.removePizza();
+    // specialsMenu.removePizza(which pizza);
     // Base pizzas
     BasePizza b1(&meat);
     BasePizza b2(&meatdel);
