@@ -100,8 +100,20 @@ int main() {
     order.addPizza(&dd);
     order.addPizza(&b1);
     order.addPizza(&b2);
+    
+    Order famorder(true);
+    famorder.addPizza(&sc);
+    famorder.addPizza(&ec);
+    famorder.addPizza(&dd);
 
-    cout << BOLD << BLUE << "\n----------------  ORDER SUMMARY ----------------" << RESET << endl;
+    Order regorder;
+    regorder.addPizza(&sc);
+    regorder.addPizza(&ec);
+    regorder.addPizza(&dd);
+    regorder.addPizza(&b1);
+
+    //Bulk
+    cout << BOLD << BLUE << "\n----------------  ORDER SUMMARY : BULK ----------------" << RESET << endl;
     order.printOrder();
     order.checkOut();
 
@@ -111,6 +123,34 @@ int main() {
 
     cout << BOLD << YELLOW << "\n---------------- PAYMENT COMPLETE  ----------------" << RESET << endl;
     order.printOrder();
+
+    cout << BOLD << BLUE << "\n----------------- THANK YOU!  -----------------" << RESET << endl;
+
+    //family
+    cout << BOLD << BLUE << "\n----------------  ORDER SUMMARY : FAMILY ----------------" << RESET << endl;
+    famorder.printOrder();
+    famorder.checkOut();
+
+    cout << BOLD << GREEN << "\n---------------- CHECKOUT -----------------" << RESET << endl;
+    famorder.printOrder();
+    famorder.pay();
+
+    cout << BOLD << YELLOW << "\n---------------- PAYMENT COMPLETE  ----------------" << RESET << endl;
+    famorder.printOrder();
+
+    cout << BOLD << BLUE << "\n----------------- THANK YOU!  -----------------" << RESET << endl;
+
+    //regular
+    cout << BOLD << BLUE << "\n----------------  ORDER SUMMARY : REGULAR ----------------" << RESET << endl;
+    regorder.printOrder();
+    regorder.checkOut();
+
+    cout << BOLD << GREEN << "\n---------------- CHECKOUT -----------------" << RESET << endl;
+    regorder.printOrder();
+    regorder.pay();
+
+    cout << BOLD << YELLOW << "\n---------------- PAYMENT COMPLETE  ----------------" << RESET << endl;
+    regorder.printOrder();
 
     cout << BOLD << BLUE << "\n----------------- THANK YOU!  -----------------" << RESET << endl;
 

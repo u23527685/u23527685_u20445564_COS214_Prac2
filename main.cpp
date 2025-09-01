@@ -70,17 +70,42 @@ int main(){
     order.addPizza(&dd);
     order.addPizza(&b1);
     order.addPizza(&b2);
+
+    Order famorder(true);
+    famorder.addPizza(&sc);
+    famorder.addPizza(&ec);
+    famorder.addPizza(&dd);
+
+    Order regorder;
+    regorder.addPizza(&sc);
+    regorder.addPizza(&ec);
+    regorder.addPizza(&dd);
+    regorder.addPizza(&b1);
     //discount
 
-    cout<<"Orderring print"<<endl;
+    cout<<"Orderring print bulk"<<endl;
     order.printOrder();
+    cout<<"Orderring print family"<<endl;
+    famorder.printOrder();
+    cout<<"Orderring print regular"<<endl;
+    regorder.printOrder();
     order.checkOut();
+    famorder.checkOut();
+    regorder.checkOut();
 
-    cout<<"Checkout print"<<endl;
+    cout<<"Checkout print bulk"<<endl;
     order.printOrder();
+    cout<<"Checkout print family"<<endl;
+    famorder.printOrder();
+    cout<<"Checkout print regular"<<endl;
+    regorder.printOrder();
     order.pay();
 
-    cout<<"Paid print"<<endl;
+    cout<<"Paid print bulk"<<endl;
     order.printOrder();
+    cout<<"Paid print family"<<endl;
+    famorder.printOrder();
+    cout<<"Paid print regular"<<endl;
+    regorder.printOrder();
     return 0;
 }

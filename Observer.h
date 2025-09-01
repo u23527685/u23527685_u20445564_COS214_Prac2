@@ -9,5 +9,6 @@ class Observer {
     public:
         virtual void update(string message) = 0;
         virtual ~Observer(){};
+        virtual string getName()=0;
 };
 #endif

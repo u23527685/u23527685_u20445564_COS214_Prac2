@@ -82,6 +82,16 @@ HEADERS = PizzaComponent.h \
 # Default target
 all: $(TARGET)
 
+# Coverage object files (with different extension)
+COVERAGE_OBJECTS = $(SOURCES:.cpp=.cov.o)
+
+# Coverage build rules
+%.cov.o: %.cpp $(HEADERS)
+	$(CXX) $(CXXFLAGS) $(COVERAGE_FLAGS) -c $< -o $@
+
+$(TARGET)_coverage: $(COVERAGE_OBJECTS)
+	$(CXX) $(CXXFLAGS) $(COVERAGE_FLAGS) -o $@ $(COVERAGE_OBJECTS) -lgcov
+
 # Build the executable
 $(TARGET): $(OBJECTS)
 	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJECTS)

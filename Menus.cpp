@@ -16,6 +16,7 @@ void Menus::addObserver(Observer* observer) {
     if (observer != NULL) {
         observers.push_back(observer);
     }
+    cout<<observer->getName()<<" Added"<<endl;
 }
 
 void Menus::removeObserver(Observer* observer) {
