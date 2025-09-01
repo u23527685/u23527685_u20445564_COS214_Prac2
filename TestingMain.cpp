@@ -154,6 +154,7 @@ int main() {
 
     cout << BOLD << BLUE << "\n----------------- THANK YOU!  -----------------" << RESET << endl;
 
+
     delete jessica;
     delete alex;
 

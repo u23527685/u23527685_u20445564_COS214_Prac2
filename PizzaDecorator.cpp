@@ -14,3 +14,7 @@ string PizzaDecorator::getName(){
 PizzaDecorator::PizzaDecorator(Pizza* p){
     pizza=p;
 }
+
+bool PizzaDecorator::operator==(const Pizza& other)const{
+    return this->pizza==other.pizza;
+}

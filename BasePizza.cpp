@@ -11,3 +11,9 @@ double BasePizza::getPrice(){
 string BasePizza::getName(){
     return toppings->getName();
 }
+
+bool BasePizza::operator==(const Pizza& other)const{
+    if(!other.toppings)
+        return false;
+    return this->toppings==other.toppings;
+}

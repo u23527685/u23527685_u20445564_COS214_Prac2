@@ -14,8 +14,7 @@ class BasePizza:public Pizza{
         ~BasePizza()=default;
         double getPrice() override;
         string getName() override;
-    private:
-        PizzaComponent* toppings;
+        bool operator==(const Pizza& other)const;
 
 };
 
