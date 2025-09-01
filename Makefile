@@ -83,56 +83,45 @@ HEADERS = PizzaComponent.h \
 all: $(TARGET)
 
 # Coverage object files (with different extension)
+# Coverage object files (with different extension)
 COVERAGE_OBJECTS = $(SOURCES:.cpp=.cov.o)
 
-# Coverage build rules
+# Coverage build rules - compile with coverage flags
 %.cov.o: %.cpp $(HEADERS)
 	$(CXX) $(CXXFLAGS) $(COVERAGE_FLAGS) -c $< -o $@
 
+# Build coverage executable using coverage object files
 $(TARGET)_coverage: $(COVERAGE_OBJECTS)
 	$(CXX) $(CXXFLAGS) $(COVERAGE_FLAGS) -o $@ $(COVERAGE_OBJECTS) -lgcov
 
-# Build the executable
-$(TARGET): $(OBJECTS)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJECTS)
-
-# Build object files
-%.o: %.cpp $(HEADERS)
-	$(CXX) $(CXXFLAGS) -c $< -o $@
-
-# Coverage-enabled build (reuses main object files with coverage flags)
+# Coverage-enabled build
 coverage: clean-coverage $(TARGET)_coverage
 
-$(TARGET)_coverage: CXXFLAGS += $(COVERAGE_FLAGS)
-$(TARGET)_coverage: $(OBJECTS)
-	$(CXX) $(CXXFLAGS) -o $(TARGET)_coverage $(OBJECTS) -lgcov
-
-# Run coverage analysis
+# Run tests with coverage analysis
 test-coverage: coverage
 	@echo "Running program with coverage analysis..."
 	./$(TARGET)_coverage
-	@echo "Generating coverage report..."
-	@if ls *.gcno 1> /dev/null 2>&1; then \
-		gcov -b -c *.gcno; \
-	else \
-		echo "No .gcno files found. Make sure the program was built with coverage flags."; \
-	fi
-	@echo "Coverage files (.gcov) generated!"
-	@echo "To view coverage summary, check the .gcov files or use:"
-	@echo "  make coverage-html"
+	@echo "Coverage data collection complete!"
 
 # Generate HTML coverage report (requires lcov)
 coverage-html: test-coverage
 	@echo "Generating HTML coverage report..."
-	lcov --capture --directory . --output-file coverage.info
-	genhtml coverage.info --output-directory coverage_html
+	@mkdir -p coverage_html
+	geninfo . --output-filename coverage.info --memory 0
+	genhtml coverage.info --output-directory coverage_html --title "Pizza System Coverage"
 	@echo "HTML coverage report generated in coverage_html/ directory"
 	@echo "Open coverage_html/index.html in your browser to view the report"
 
 # Clean up generated files
 clean:
-	rm -f $(OBJECTS) $(TARGET) $(TARGET)_coverage
-	rm -f *.gcov *.gcda *.cov.o *.gcno coverage.info
+	rm -f $(OBJECTS) $(TARGET) $(TARGET)_coverage $(COVERAGE_OBJECTS)
+	rm -f *.gcov *.gcda *.gcno coverage.info
+	rm -rf coverage_html/
+
+# Clean coverage files only
+clean-coverage:
+	rm -f $(TARGET)_coverage $(COVERAGE_OBJECTS)
+	rm -f *.gcov *.gcda *.gcno coverage.info
 	rm -rf coverage_html/
 
 # Clean coverage files only

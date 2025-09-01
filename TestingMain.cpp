@@ -41,6 +41,12 @@ using namespace std;
 
 int main() {
 
+    Dough d;
+    TomatoSauce T;
+    cout<<d.getName()<<" R"<<d.getPrice()<<" "<<T.getName()<<" R"<<T.getPrice()<<endl;
+
+    cout<<(d==T)<<endl;
+
     cout << BOLD << BLUE << "-----------------  WELCOME TO PIZZA PARADISE  -----------------" << RESET << endl << endl;
     //Testing website
     Website* myWeb = new Website("Kai's Pizza Paradise");
@@ -49,6 +55,7 @@ int main() {
     
     ToppingGroup vegan("Vegeterian");
     ToppingGroup meat("Meat Lovers");
+    ToppingGroup vedandel("Vegeterian deluxe");
 
     // Vegan pizza
     vegan.add(new Onions());
@@ -56,6 +63,8 @@ int main() {
     vegan.add(new GreenPeppers());
     vegan.add(new Mushrooms());
     vegan.add(new Feta());
+    vedandel.add(vegan.clone());
+
 
     // Meat pizza
     meat.add(new Salami());
@@ -69,6 +78,9 @@ int main() {
     ToppingGroup meatdel("Meat Lovers Deluxe");
     meatdel.add(meat.clone());
     meatdel.add(new Pepperoni());
+    
+    ToppingGroup meatdel2("yayaya");
+    meatdel2.add(meatdel.clone());
 
     cout << CYAN << "Pizza: " << BOLD << meatdel.getName() << RESET << " | Price: " << GREEN << "R" << meatdel.getPrice() << RESET << endl << endl;
 
@@ -89,9 +101,11 @@ int main() {
     
 
     specialsMenu.addObserver(jessica);
+    specialsMenu.addObserver(myweb2);
     //remove observer
     cout<<"Removing customer"<<endl;
     pizzaMenu.removeObserver(jessica);
+    pizzaMenu.removeObserver(myweb2);
     
     // Base pizzas
     BasePizza b1(&meat);
@@ -101,6 +115,7 @@ int main() {
     cout<<"Removing Pizzas:"<<endl;
     pizzaMenu.removePizza(&b1);
     specialsMenu.addPizza(&b2);
+    cout<<(b1==b2)<<endl;
    
 
     
@@ -108,6 +123,9 @@ int main() {
     StuffedCrust sc(&b1);
     ExtraCheese ec(&b2);
     StuffedCrust dd(&ec);
+
+    cout<<(sc==ec)<<(sc==dd)<<endl;
+    cout<<(b1==sc)<<endl;
 
     cout << YELLOW << "\n Pizzas with Decorators:" << RESET << endl;
     sc.printPizza();
