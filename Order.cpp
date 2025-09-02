@@ -43,12 +43,14 @@ void Order::checkOut(){
     OrderState* newState=state->checkout();
     delete state; 
     state=newState;
+    printOrder();
 }
 
 void Order::pay(){
     OrderState* newState=state->pay();
     delete state; 
     state=newState;
+    printOrder();
 }
 
 Order::~Order(){

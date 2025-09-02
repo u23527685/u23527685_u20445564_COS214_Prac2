@@ -87,12 +87,12 @@ all: $(TARGET)
 COVERAGE_OBJECTS = $(SOURCES:.cpp=.cov.o)
 
 # Coverage build rules - compile with coverage flags
-%.cov.o: %.cpp $(HEADERS)
-	$(CXX) $(CXXFLAGS) $(COVERAGE_FLAGS) -c $< -o $@
+%.o: %.cpp $(HEADERS)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 # Build coverage executable using coverage object files
-$(TARGET)_coverage: $(COVERAGE_OBJECTS)
-	$(CXX) $(CXXFLAGS) $(COVERAGE_FLAGS) -o $@ $(COVERAGE_OBJECTS) -lgcov
+$(TARGET): $(OBJECTS)
+	$(CXX) $(CXXFLAGS) -o $@ $(OBJECTS)
 
 # Coverage-enabled build
 coverage: clean-coverage $(TARGET)_coverage
@@ -115,12 +115,6 @@ coverage-html: test-coverage
 # Clean up generated files
 clean:
 	rm -f $(OBJECTS) $(TARGET) $(TARGET)_coverage $(COVERAGE_OBJECTS)
-	rm -f *.gcov *.gcda *.gcno coverage.info
-	rm -rf coverage_html/
-
-# Clean coverage files only
-clean-coverage:
-	rm -f $(TARGET)_coverage $(COVERAGE_OBJECTS)
 	rm -f *.gcov *.gcda *.gcno coverage.info
 	rm -rf coverage_html/
 
