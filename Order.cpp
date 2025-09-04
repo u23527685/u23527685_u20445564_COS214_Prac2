@@ -65,6 +65,6 @@ Order::~Order(){
  void Order::printDiscount(){
     DiscountStrategy* newdiscount=discount->getDiscount(this);
     delete discount;
-    discount=newdiscount;
+    discount = newdiscount;
     cout<<discount->getDiscountName();
  }

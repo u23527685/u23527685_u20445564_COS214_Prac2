@@ -102,6 +102,7 @@ void demo(){
 
     cout << BOLD << GREEN << "\nThank you for ordering from"<<mySite->getName() << RESET << endl;
     
+    
     delete jessica;
     delete mySite;
 }
@@ -271,7 +272,7 @@ void test(){
 int main() {
 
     demo();
-    test();
+    //test();
 
     return 0;
 }
